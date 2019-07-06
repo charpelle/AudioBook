@@ -3,48 +3,25 @@ import { ScrollView, View, TouchableOpacity, Image, FlatList } from 'react-nativ
 import styled from 'styled-components';
 import { AntDesign } from '@expo/vector-icons';
 
+import ImageList from '../components/ImageList';
 import colors from '../utils/colors';
 import metrics from '../utils/metrics';
 import { images } from '../data/images';
 
 
-const ImageList = ({ navigation }) => {
-  return (
-    <FlatList 
-      data={images}
-      horizontal
-      keyExtractor={(i, t) => t.toString()}
-      style={{ height: 146 }}
-      contentContainerStyle={{ height: 146 }}
-      renderItem={({ item }) => (
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Book', { image: item.uri })}
-        >
-          <Image
-            style={{ 
-              width: 112,
-              height: 138,
-              borderradius: 15,
-              margin: 3.75
-            }}
-            source={{ uri: item.uri }}
-           />
-        </TouchableOpacity>
-      )}
-    />
-  )
-}
 
 export default class HomeScreen extends Component {
   render() {
     return (
      <ScrollView style={[{ flex: 1, backgroundColor: '#303030' }]}>
-      <AntDesign name="menuunfold" size={30} color="white" />
+      <Logo>
+        <AntDesign name="menuunfold" size={20} color="white" />
+      </Logo>
        <HeadingText>My Library</HeadingText>
        <SubView>
          <View>
-          <Sub1>Purchases</Sub1>
-          <Sub2>9 Total</Sub2>
+          <SubHeaderText>Purchases</SubHeaderText>
+          <SubTotalText>9 Total</SubTotalText>
          </View>
          <SubButton>
            <SubButtonText>See Shop</SubButtonText>
@@ -62,11 +39,13 @@ export default class HomeScreen extends Component {
               <AudioBookHeaderText>AudioBooks</AudioBookHeaderText>
               <TotalText>9 Total</TotalText>
             </View>
-            <SubButton style={{ backgroundColor: 'green' }}>
+            <SubButton style={{ backgroundColor: 'green', marginRight: 20 }}>
               <SubButtonText>New</SubButtonText>
             </SubButton>
           </Wrapper>
-          <ImageList navigation={this.props.navigation} />
+          <ImageView style={{ marginTop: 30 }}>
+            <ImageList navigation={this.props.navigation} />
+          </ImageView>
        </AudioBook>
 
      </ScrollView>
@@ -79,11 +58,17 @@ const Container = styled.View`
   background: ${colors.background}
 `
 
+const Logo = styled.View`
+  position: absolute;
+  top: 40;
+  right: 20
+`
+
 const HeadingText = styled.Text`
   color: white;
   font-size: 30px;
-  margin-top: 80px;
-  margin-left: 20px;
+  margin-top: ${metrics.height * 0.1};
+  margin-left: ${metrics.width * 0.05};
   font-weight: bold;
 `
 
@@ -91,19 +76,20 @@ const SubView = styled.View`
   flex-direction: row;
   margin: 20px;
   justify-content: space-between;
-  align-items: center;
+  margin-left: ${metrics.width * 0.05};
+  /* align-items: center; */
 `
 
-const Sub1 = styled.Text`
+const SubHeaderText = styled.Text`
   color: white;
   font-size: 20px;
   font-weight: bold;
 
 `
 
-const Sub2 = styled.Text`
+const SubTotalText = styled.Text`
   color: ${colors.grey};
-  font-size: 20px;
+  font-size: 17px;
 `
 
 const SubButton = styled.View`
@@ -124,6 +110,7 @@ const SubButtonText = styled.Text`
 const ImageView = styled.View`
   height: ${metrics.height * 0.37};
   width: ${metrics.width};
+  margin-left: ${metrics.width * 0.05};
 `
 
 const Wrapper = styled.View`
@@ -141,14 +128,14 @@ const AudioBook = styled.View`
   background-color: ${colors.yellow};
   border-top-right-radius: 30;
   border-top-left-radius: 30;
-  margin-top: ${metrics.height * 0.04};
+  margin-top: ${metrics.height * 0.06};
 `
 
 const AudioBookHeaderText = styled.Text`
   color: white;
   font-size: 30px;
   font-weight: bold;
-  margin-top: ${metrics.height * 0.04};
+  margin-top: ${metrics.height * 0.03};
   margin-left: ${metrics.width * 0.08};
 `
 
