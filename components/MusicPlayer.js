@@ -17,14 +17,6 @@ export default class MusicPlayer {
     }
 
     /**
-     * Get current item name.
-     * @return {string} Current item name.
-     */
-    getCurrentItemName = () => {
-        return this.list[this.index].name;
-    };
-
-    /**
      * Start or stop audio.
      * @param {number} index - Index of playing item.
      * @param {boolean} playing - Is audio playing now or no.
@@ -48,44 +40,4 @@ export default class MusicPlayer {
         }
     };
 
-    /**
-     * Set speed of playing music.
-     * @param {number} speed - Speed of now playing music.
-     */
-    setSpeed = (speed) => {
-        this.soundObject.setRateAsync(speed);
-    };
-
-    /**
-     * Play next item.
-     * @return {Promise}
-     */
-    playNext = async () => {
-
-        if(!this.list[this.index + 1]) {
-            Alert.alert('Warning', 'There are no next');
-        } else {
-            const path = this.list[this.index + 1].path;
-            this.index++;
-            await this.soundObject.unloadAsync();
-            await this.soundObject.loadAsync(path);
-            await this.soundObject.playAsync();
-        }
-    }
-
-    /**
-     * Play previous item.
-     * @return {Promise}
-     */
-    playPrev = async () => {
-        if(!this.list[this.index  - 1]) {
-            Alert.alert('Warning', 'There are no prev');
-        } else {
-            const path = this.list[this.index  - 1].path;
-            this.index--;
-            await this.soundObject.unloadAsync();
-            await this.soundObject.loadAsync(path);
-            await this.soundObject.playAsync();
-        }
-    }
 }

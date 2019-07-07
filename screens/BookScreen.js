@@ -1,66 +1,93 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View, ScrollView } from 'react-native'
 import { Entypo } from '@expo/vector-icons';
 import styled from 'styled-components';
 
+import MusicPlayer from '../components/MusicPlayer';
+import { list } from '../data/list';
+
 import colors from '../utils/colors';
 import metrics from '../utils/metrics';
 
-const BookScreen = ({ navigation }) => {
-  const { image } = navigation.state.params;
-  return (
-    <Container> 
-      <HeaderImage source={{ uri: image }} />
-      <Body>
-        <TagContainer>
-          <TagBody style={{ backgroundColor: colors.red }}>
-            <TagText>Love</TagText>
-          </TagBody>
-          <TagBody style={{ backgroundColor: colors.green }}>
-            <TagText>Humor</TagText>
-          </TagBody>
-        </TagContainer>
-        <HeaderText>Keep smiling after a Photoshop's crash</HeaderText>
-        <BodyText>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        </BodyText>
-        <AuthorContainer>
-          <RowStyle>
-            <AuthorImage source={{ uri: image }} />
-            <View>
-              <AuthorLabel>Author</AuthorLabel>
-              <AuthorName>Lau Martinez</AuthorName>
-            </View>
-          </RowStyle>
-          <RowStyle>
-            <AuthorImage source={{ uri: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500' }} />
-            <View>
-              <AuthorLabel>Author</AuthorLabel>
-              <AuthorName>Lau Martinez</AuthorName>
-            </View>
-          </RowStyle>
-        </AuthorContainer>
-        <Divide />
-        <RowStyle>
-          <View>
-            <RowStyle style={{ justifyContent: 'space-between' }}>
-              <Chapter>Chapters</Chapter>
-              <ChapterSubText style={{ marginRight:  -20 }}>23 Total</ChapterSubText>
+class BookScreen extends Component {
+  MusicPlayer = null;
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      playing: false,
+      name: null
+    };
+  }
+
+  componentWillMount() {
+    this.MusicPlayer = new MusicPlayer(list)
+  }
+
+  playMusic = () => {
+    const randomMusic = Math.floor((Math.random() * list.length) + 1 )
+    this.MusicPlayer.startPlay(randomMusic, this.state.playing)
+      .then(() => {
+        this.setState({ playing: !this.state.playing })
+      })
+  }
+  
+  render() {
+    const { image } = this.props.navigation.state.params;
+    return (
+      <Container> 
+        <HeaderImage source={{ uri: image }} />
+        <Body>
+          <TagContainer>
+            <TagBody style={{ backgroundColor: colors.red }}>
+              <TagText>Love</TagText>
+            </TagBody>
+            <TagBody style={{ backgroundColor: colors.green }}>
+              <TagText>Humor</TagText>
+            </TagBody>
+          </TagContainer>
+          <HeaderText>Keep smiling after a Photoshop's crash</HeaderText>
+          <BodyText>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          </BodyText>
+          <AuthorContainer>
+            <RowStyle>
+              <AuthorImage source={{ uri: image }} />
+              <View>
+                <AuthorLabel>Author</AuthorLabel>
+                <AuthorName>Lau Martinez</AuthorName>
+              </View>
             </RowStyle>
-            <View>   
-              <ChapterText>Chapter 1</ChapterText>
-              <ChapterTitle>How to supress the desire to die</ChapterTitle>
-              <ChapterSubText>16 minutes</ChapterSubText>
+            <RowStyle>
+              <AuthorImage source={{ uri: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500' }} />
+              <View>
+                <AuthorLabel>Author</AuthorLabel>
+                <AuthorName>Lau Martinez</AuthorName>
+              </View>
+            </RowStyle>
+          </AuthorContainer>
+          <Divide />
+          <RowStyle>
+            <View>
+              <RowStyle style={{ justifyContent: 'space-between' }}>
+                <Chapter>Chapters</Chapter>
+                <ChapterSubText style={{ marginRight:  -20 }}>23 Total</ChapterSubText>
+              </RowStyle>
+              <View>   
+                <ChapterText>Chapter 1</ChapterText>
+                <ChapterTitle>How to supress the desire to die</ChapterTitle>
+                <ChapterSubText>16 minutes</ChapterSubText>
+              </View>
             </View>
-          </View>
-          <PlayButton>
-            <Entypo name="controller-play" size={20} color="white" />
-          </PlayButton>
-        </RowStyle>
-      </Body>
-    </Container>
-  )
+            <PlayButton onPress={this.playMusic}>
+              <Entypo name={!this.state.playing ? "controller-play" : "controller-stop" } size={20} color="white" />
+            </PlayButton>
+          </RowStyle>
+        </Body>
+      </Container>
+    )
+  }
 }
 
 export default BookScreen
