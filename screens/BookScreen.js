@@ -44,10 +44,15 @@ const BookScreen = ({ navigation }) => {
         <Divide />
         <RowStyle>
           <View>
-            <Chapter>Chapters</Chapter>
-            <ChapterText>Chapter 1</ChapterText>
-            <ChapterTitle>How to supress the desire to die</ChapterTitle>
-            <ChapterDuration>16 minutes</ChapterDuration>
+            <RowStyle style={{ justifyContent: 'space-between' }}>
+              <Chapter>Chapters</Chapter>
+              <ChapterSubText style={{ marginRight:  -20 }}>23 Total</ChapterSubText>
+            </RowStyle>
+            <View>   
+              <ChapterText>Chapter 1</ChapterText>
+              <ChapterTitle>How to supress the desire to die</ChapterTitle>
+              <ChapterSubText>16 minutes</ChapterSubText>
+            </View>
           </View>
           <PlayButton>
             <Entypo name="controller-play" size={20} color="white" />
@@ -182,7 +187,7 @@ const ChapterTitle = styled.Text`
   width: 70%
 `
 
-const ChapterDuration = styled.Text`
+const ChapterSubText = styled.Text`
   color: grey;
   font-size: 15;
   margin-left: ${metrics.width * 0.08};
