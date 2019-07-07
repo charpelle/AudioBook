@@ -82,12 +82,10 @@ const Body = styled.ScrollView`
 `
 
 const TagContainer = styled.View`
-  
   flex-direction: row;
   width: ${metrics.width * 0.65};
   margin-left: ${metrics.width * 0.08};
-  margin-top: ${metrics.height * 0.03};
-  /* justify-content: space-between; */
+  margin-top: ${metrics.height * 0.02};
 `
 
 const TagBody = styled.View`
@@ -119,7 +117,7 @@ const BodyText = styled.Text`
 `
 
 const AuthorContainer = styled.View`
-background: ${colors.yellow};
+/* background: ${colors.yellow}; */
 
   height: ${metrics.height * 0.1};
   margin-left: ${metrics.width * 0.04};
@@ -134,9 +132,9 @@ const RowStyle = styled.View`
 `
 
 const AuthorImage = styled.Image`
-  width: ${metrics.width * 0.1};
-  height: ${metrics.height * 0.1};
-  border-radius: ${metrics.width * 0.1 / 2};
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
   margin-left: 5px;
   margin-right: 5px;
 `
@@ -154,7 +152,8 @@ const AuthorName = styled.Text`
 const Divide = styled.View`
   background: white;
   height: 1;
-  width: ${metrics.width * 0.84};
+  /* width: ${metrics.width * 0.84}; */
+  margin: 10px 20px;
   align-items: center;
 `
 
@@ -163,7 +162,6 @@ const Chapter = styled.Text`
   color: white;
   font-size: 25;
   margin-left: ${metrics.width * 0.08};
-  margin-top: ${metrics.height * 0.01};
   font-weight: bold;
 `
 
@@ -196,7 +194,7 @@ const PlayButton = styled.TouchableOpacity`
   height: ${metrics.width * 0.10};
   width: ${metrics.width * 0.10};
   margin-top: ${metrics.height * 0.1};
-  margin-right: 80px;
+  margin-right: 100px;
   align-items: center;
   justify-content: center;
   border-radius: ${metrics.width * 0.10 / 2}
