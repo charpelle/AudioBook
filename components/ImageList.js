@@ -2,10 +2,9 @@ import React from 'react'
 import { TouchableOpacity, FlatList } from 'react-native'
 import styled from 'styled-components';
 
-import { images } from '../data/images';
 import metrics from '../utils/metrics';
 
-export default ImageList = ({ navigation }) => {
+export default ImageList = ({ navigation, images }) => {
   return (
     <FlatList 
       data={images}

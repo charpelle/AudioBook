@@ -29,8 +29,8 @@ export default class HomeScreen extends Component {
        </SubView>
 
        <ImageView>
-         <ImageList navigation={this.props.navigation} />
-         <ImageList navigation={this.props.navigation} />
+         <ImageList navigation={this.props.navigation} images={images.slice(0, 3)} />
+         <ImageList navigation={this.props.navigation} images={images.slice(3, 6)} />
        </ImageView>
 
        <AudioBook>
@@ -44,7 +44,7 @@ export default class HomeScreen extends Component {
             </SubButton>
           </Wrapper>
           <ImageView style={{ marginTop: 30 }}>
-            <ImageList navigation={this.props.navigation} />
+            <ImageList navigation={this.props.navigation} images={images.slice(6)} />
           </ImageView>
        </AudioBook>
 

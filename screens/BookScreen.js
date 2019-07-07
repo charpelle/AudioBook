@@ -7,10 +7,10 @@ import colors from '../utils/colors';
 import metrics from '../utils/metrics';
 
 const BookScreen = ({ navigation }) => {
-  console.log('navigation', navigation)
+  const { image } = navigation.state.params;
   return (
     <Container> 
-      <HeaderImage source={{ uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg' }} />
+      <HeaderImage source={{ uri: image }} />
       <Body>
         <TagContainer>
           <TagBody style={{ backgroundColor: colors.red }}>
@@ -27,14 +27,14 @@ const BookScreen = ({ navigation }) => {
         </BodyText>
         <AuthorContainer>
           <RowStyle>
-            <AuthorImage source={{ uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg' }} />
+            <AuthorImage source={{ uri: image }} />
             <View>
               <AuthorLabel>Author</AuthorLabel>
               <AuthorName>Lau Martinez</AuthorName>
             </View>
           </RowStyle>
           <RowStyle>
-            <AuthorImage source={{ uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg' }} />
+            <AuthorImage source={{ uri: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500' }} />
             <View>
               <AuthorLabel>Author</AuthorLabel>
               <AuthorName>Lau Martinez</AuthorName>

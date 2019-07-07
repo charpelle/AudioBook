@@ -4,8 +4,9 @@ import Home from '../screens/HomeScreen';
 import Book from '../screens/BookScreen';
 
 export default createAppContainer(createStackNavigator({
-  Book,
+  
   Home,
+  Book,
 }, {
   headerMode: 'none'
 }))
