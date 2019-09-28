@@ -12,6 +12,4 @@
 
 This design was created by David Felipe V (https://dribbble.com/davidfelipeV)
 
-The original repo was forked from (https://github.com/codinger41/audio-book)
-
 The source code for the Music audio was forked from (https://github.com/HaykSim1/react-native-expo-audio-player)
